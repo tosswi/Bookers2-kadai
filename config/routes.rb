@@ -6,4 +6,5 @@ Rails.application.routes.draw do
  resources :users
  resources :homes
  get 'home/about'=>'home#about'
+ get '/search' => 'users#search'
 end

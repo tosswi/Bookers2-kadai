@@ -15,11 +15,11 @@
 
 <h2>New book</h2>
 <%= form_for (@book) do |f| %>
-<% if @book.errors.any? %>
+<% if books.errors.any? %>
 <div id="erorr_explanation" >
 	<ul>
-		<%= @book.errors.count %>errors prohibited this obj from being saved:
-		<% @book.errors.full_messages.each do |message| %>
+		<%= books.errors.count %>errors prohibited this obj from being saved:
+		<% books.errors.full_messages.each do |message| %>
 		<%= message %>
 		<% end %>
 	</ul>
@@ -30,4 +30,9 @@
 <label for="bookname">Body</label>
 <div class="input"><%= f.text_area :body, placeholder:'本文' %></div>
 <%= f.submit 'Create Book' ,class: "btn btn-primary"%>
+<% end %>
+<p>検索</p>
+<%= form_tag(search_path,:method => 'get') do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag 'Search', :name => nil %>
 <% end %>
